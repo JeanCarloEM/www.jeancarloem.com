@@ -301,7 +301,7 @@
         return write();
       }
 
-      $.get('parts/.artigo.html', (r) => {
+      $.get('parts/artigo.html', (r) => {
         w.modeloArtigo = r;
         return write();
       });
