@@ -1,0 +1,33 @@
+
+/* Links */
+.portfolio-single p a {
+	text-decoration: none !important;
+	color: #0645ad !important;
+	background: none !important;
+}
+.portfolio-single p a:visited {
+	color: #0b0080 !important;
+}
+.portfolio-single p a:active {
+	color: #faa700 !important;
+}
+.portfolio-single p a:hover, .portfolio-single a:focus {
+	text-decoration: underline !important;
+}
+.portfolio-single p a.stub {
+	color: #772233 !important;
+}
+.portfolio-single p a.new{
+	color: #ba0000 !important;
+}
+.portfolio-single p a.new:visited {
+	color: #a55858 !important;
+}
+
+.portfolio-single p{
+  text-align: justify;
+}
+
+.launch a:hover{
+  color: #000 !important;
+}

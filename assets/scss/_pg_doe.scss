@@ -1,0 +1,237 @@
+section.global.sobre,
+section.global.doe{
+  font-size: .9rem;
+
+  .toc{
+    margin-left: 1.7rem;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+
+    li{
+      cursor: pointer;
+    }
+  }
+
+  h1{
+    font-size: 2rem;
+  }
+
+  > section{
+    padding: 3rem 0;
+
+    &:nth-child(even){
+      background: rgba(255,255,255,.05) !important;
+    }
+  }
+
+  .doacao{
+    div.opcoes{      
+      padding: 0 .5rem;
+      
+      @media screen and (max-width: 460px) {
+        text-align: center !important;
+      }
+      
+      @media screen and (min-width: 460px) {
+        text-align: left !important;
+      }
+
+      p{
+        text-align: justify !important;
+      }
+    }
+
+    div.conta{
+      max-width: calc(360px - 2rem);
+      margin-left: -.1rem !important;
+      
+      > img.bb{
+        max-height: 5.1rem;
+        float: left !important;
+        margin: 0 !important;
+        margin-right: .8rem !important;
+      }
+    }
+
+    img.doe{
+      margin: 0 !important;
+      margin-bottom: .8rem !important;
+      max-height: 6rem;
+    }
+
+    div.conta{
+      float: left;
+      width: 22.5rem;
+      border: 1px solid #cdb864;
+      height: 9.5rem;
+      padding: 2rem .5rem;
+      margin: 1rem .5rem;
+      
+      &.carteirabb{
+        border-color: #631cc8;
+      }
+      &.pix{
+        border-color: #32bcad;
+      }
+    }
+
+    div.doebtb{
+      display: block;
+      padding: 0;
+      margin: 0;      
+      
+      @media screen and (max-width: 460px) {
+        text-align: center !important;
+      }
+      
+      @media screen and (min-width: 460px) {
+        text-align: left !important;
+      }      
+    }
+
+    a.doe{
+      margin: 1rem .25rem;
+      padding: .7rem;
+      height: 9.5rem;
+      display: inline-block;
+      text-decoration: none !important;
+
+      > img{
+        margin: 0 !important;
+        margin-bottom: .5rem !important;
+      }
+
+      &.doe5,
+      &.doe15,
+      &.doe10,
+      &.doe25{
+        &:not(:hover){
+          background: #d36484;
+        }
+      }
+
+      > div{
+        color:#fff;
+        text-align: center;
+      }
+
+      &:hover{
+        > div{
+          color:#222;
+        }
+      }
+    }
+
+    div.formulas{
+      float: right;
+
+      padding: .5rem;
+      margin: 2rem .5rem;
+      background: #eee;
+
+      > img{
+        padding: 0;
+        margin: 1rem 0;
+        max-height: 9rem;
+        max-width: 75vw;
+      }
+    }
+
+    table.zebra{
+      margin: 1rem .5rem;
+      tr{
+        &:first-of-type{
+          td{
+            background: #888 !important;
+            color: #fff;
+            font-weight: bold;
+            border-top: 1px solid rgba(0,0,0,.2);
+          }
+        }
+
+        td{
+          color: #222;
+          text-align: right;
+          padding: .5rem;
+          background: transparent;
+          border-bottom: 1px solid rgba(0,0,0,.2);
+          border-right: 1px solid rgba(0,0,0,.2);
+
+          &:first-of-type{
+            white-space: nowrap;
+            text-align: left;
+            border-left: 1px solid rgba(0,0,0,.2);
+          }
+
+          &:last-of-type{
+            white-space: nowrap;
+          }
+        }
+
+        &:nth-child(odd){
+          td{
+            background: #e5e5e5;
+          }
+        }
+
+        &:hover{
+          td{
+            background: yellow;
+          }
+        }
+
+        &.subtotal{
+          td{
+            background: rgba(211, 100, 132, .5);
+          }
+        }
+        &.bruto{
+          td{
+            background: #d36484;
+
+            &,*{
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+
+    &.recompensas{
+      ul{
+        margin-left: 1.5rem;
+        li{
+          white-space: normal !important;
+        }
+      }
+    }
+
+    &.kickante{
+      padding: 1rem .5rem;
+      
+      .btbs{
+        line-height: 10rem;
+        vertical-align: middle;
+      }
+
+      form,
+      .btb{
+        display: inline-block;
+        max-height: 10.5rem;
+        min-height: 10.5rem;
+        vertical-align: middle;
+
+        > div{
+          margin-bottom: 1rem;
+        }
+      }
+
+      form{
+        margin: .25rem;
+        border: 1px solid #656565;
+        padding: 3.5rem .5rem;
+      }
+    }
+  }
+}

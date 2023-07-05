@@ -1,0 +1,53 @@
+section.charts{
+  .grafico{
+    //border: 1px solid rgba(0,0,0,.15);
+    margin: .5em;
+
+    &:first-of-type{
+      margin-top: 0;
+    }
+
+    > div{
+      text-align: center;
+      margin: .5em;
+      font-weight: bold;
+      color: rgba(255,255,255,.5);
+    }
+
+    span, text{
+      fill: #fff !important;
+      color: #fff !important;
+    }
+
+    svg{
+      line.ct-grid{
+        stroke: rgba(255,255,255,.2) !important;
+      }
+    }
+  }
+
+  .legenda{
+    margin: .3em 0;
+    //border: 1px solid rgba(0,0,0,.1);
+    //background: rgba(0,0,0,.03);
+    padding: 1em;
+
+    ul,ol{
+      font-size: .85em;
+
+      margin: 0;
+      padding: 0 1em;
+      padding-left: 3em;
+      color: rgba(255,255,255,.6);
+      white-space: nowrap;
+
+      li{
+        padding: 0;
+        margin: 0;
+        padding-left: .35em;
+        line-height: 1.6em;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.linhatempo{
+  .itemtempo{
+    margin: 0;
+    padding: .7em 0;
+    padding-left: 4em;
+    margin-right: .5em;
+
+    &:before{
+      content: " ";
+      position: absolute;
+      height: 100%;
+      width: 3em;
+      margin-left: -3em;
+      background: url('../img/linha-itens.svg') no-repeat;
+      background-size: 3em auto;
+      background-position: left center;
+    }
+    
+    &:first-of-type{
+      padding-top: 1em;
+      &:before{
+        margin-top: -1em;
+        height: calc(100% + .7em);
+      }
+    }
+  }
+}

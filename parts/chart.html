@@ -1,0 +1,210 @@
+<section id="expertise" class="charts">
+  <div class='colunabarra'>
+    <h2 class="caption"><span>Expertise / Know-know</span></h2>
+
+    <div class="colunas2">
+      <div class="grafico chart-hab">
+        <div>Expertise</div>
+      </div>
+      <div class="legenda">
+        <ol type="A" class="rosta"></ol>
+
+      </div>
+      <div class="grafico chart-know">
+        <div>Know-know</div>
+      </div>
+
+      <div class="legenda">
+        <ol type="A" class="barras"><!--
+          <?php
+          $labelBarras = [chr(ord($labelRosca[count($labelRosca) - 1]))];
+          foreach ($know as $key => $value) {
+            echo "<li>$key</li>";
+            $labelBarras[] = chr(ord($labelBarras[count($labelBarras) - 1]) + 1);
+          }
+
+          unset($labelBarras[0]);
+          $labelBarras = array_values($labelBarras);
+          ?>
+        -->
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class='colunabarra'>
+    <h2 class="caption"><span>Conhecimento Prático</span></h2>
+
+    <p>Abaixo listo onde possuo conhecimento prático (conhecimento teórico ou básico não citado):<br /><br /></p>
+
+    <div class="iscroll-wrapper">
+      <div class="scroller container">
+        <table cellspacing='0' cellpadding='0' border='0' width='100%' class='zebra qualifica'></table>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function ($, w) {
+    var eachQuali = (quali, onEnterGroup, onEnterItem, onSumGroup) => {
+      onEnterGroup = typeof onEnterGroup === "undefined" ? false : onEnterGroup;
+      onEnterItem = typeof onEnterItem === "undefined" ? false : onEnterItem;
+      onSumGroup = typeof onSumGroup === "undefined" ? false : onSumGroup;
+
+      // global $quali, $pgroup, $ptotal, $pgroupName;
+
+      w.exp = {};
+      w.exp.pgroup = [];
+      w.exp.pgroupName = {};
+
+      if (quali) {
+        let prev = '';
+
+        let qualikeys = Object.keys(quali);
+        for (let gk in qualikeys) {
+          let gname = qualikeys[gk];
+          let items = quali[gname];
+          w.exp.ptotal = 0;
+
+          if (items) {
+            if (prev !== gname) {
+              w.exp.pgroup.push(0);
+              w.exp.pgroupName[gname] = 0;
+
+              if (typeof onEnterGroup === 'function') {
+                onEnterGroup(gname);
+              }
+            }
+
+            let ikeys = Object.keys(items);
+            for (let ik in ikeys) {
+              let iname = ikeys[ik];
+              let item = items[iname];
+
+              w.exp.pgroup[w.exp.pgroup.length - 1] += item;
+              w.exp.pgroupName[gname] += Math.ceil((item / 100) / (Object.keys(items).length) * 100);
+              w.exp.ptotal += item;
+
+              if (typeof onEnterItem === 'function') {
+                onEnterItem(gname, iname, item);
+              }
+            }
+
+            if (typeof onSumGroup === 'function') {
+              onSumGroup(gname, w.exp.pgroupName[gname]);
+            }
+          }
+        }
+      }
+    };
+
+    var options = {
+      labelInterpolationFnc: function (value) {
+        return value[0]
+      },
+      donut: true,
+      donutWidth: "65%",
+      startAngle: 315
+    };
+
+    var responsiveOptions = [
+      ['screen', {
+        labelOffset: 130,
+        chartPadding: 50,
+        labelDirection: 'explode',
+
+        labelInterpolationFnc: function (value) {
+          return value;
+        }
+      }]
+    ];
+
+    $.getJSON('dados/expertise.json', function (json) {
+      w.quali = json;
+
+      $.get('parts/knows.title.html', (ktitle) => {
+        $.get('parts/knows.row.html', (krow) => {
+          eachQuali(w.quali, (gname) => {
+            let tratado = gname.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036F]/g, '').replace(/[^A-Za-z][^\d\w]*/i, '').replace(/\s+/i, '');
+
+            $("section#habilidades .scroller > table").append($(ktitle.parseProps({
+              "gname": gname,
+              "tratado": tratado
+            })));
+          }, (gname, iname, item) => {
+            $("section#habilidades .scroller > table").append($(krow.parseProps({
+              "iname": iname.trim(),
+              "item": item,
+              "mod": 100 - item
+            })));
+          }, (gname, percent) => {
+            let tratado = gname.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036F]/g, '').replace(/[^A-Za-z][^\d\w]*/i, '').replace(/\s+/i, '');
+
+            new Chartist.Pie('.grafico.chart-seg-conhecimento.gauge_' + tratado, {
+              series: [percent,]
+            }, {
+              donut: true,
+              donutWidth: 15,
+              donutSolid: true,
+              startAngle: 270,
+              total: 200,
+              showLabel: true
+            });
+          });
+
+          let labelRosca = ['@'];
+
+          let qualikeys = Object.keys(w.quali);
+          for (let gk in qualikeys) {
+            let key = qualikeys[gk];
+            $('section#expertise .legenda ol.rosta').append($("<li>" + key + "</li>"));
+            labelRosca.push(String.fromCharCode(labelRosca[labelRosca.length - 1].charCodeAt(0) + 1));
+          }
+
+          labelRosca.shift();
+
+          new Chartist.Pie('.chart-hab', {
+            labels: labelRosca,
+            series: w.exp.pgroup
+          }, options);
+
+          $.getJSON('dados/know.json', function (jk) {
+            var know = jk;
+            let labelBarras = [String.fromCharCode((labelRosca[labelRosca.length - 1].charCodeAt(0)))];
+
+            let knowkeys = Object.keys(w.quali);
+            for (let kk in knowkeys) {
+              let key = knowkeys[kk];
+              $('section#expertise .legenda ol.barras').append($("<li>" + key + "</li>"));
+              labelBarras.push(String.fromCharCode(labelBarras[labelBarras.length - 1].charCodeAt(0) + 1));
+            }
+
+            $('section#expertise .legenda ol.barras').attr('start', labelRosca.length + 1);
+            labelBarras.shift();
+
+            new Chartist.Bar('.chart-know', {
+              labels: labelBarras,
+              series: (function (o) {
+                tmp = [];
+                Object.keys(o).forEach((prop) => {
+                  if (o[prop]) { tmp.push(o[prop]); }
+                });
+                return tmp;
+              })(know)
+            }, {
+              distributeSeries: true
+            });
+          });
+
+        });
+      });
+
+    });
+
+
+  })(Zepto, window);
+</script>

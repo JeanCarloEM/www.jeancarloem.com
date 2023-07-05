@@ -1,0 +1,24 @@
+<section id="projetos" class='artigos'>
+  <div class='colunabarra'>
+    <h2 class="caption"><span>Projetos Online</span></h2>
+    <div class='colunas ctt'></div>
+  </div>
+</section>
+
+<script>
+  var makeWorks = (i) => {
+    i = isFinite(i) ? i : 0;
+
+    if (i >= window.works.length) return;
+
+    window.makeArtigo(window.works[i], false, (r) => {
+      $("section#projetos div.ctt").append($(r));
+      makeWorks(++i);
+    });
+  };
+
+  $.getJSON('dados/works.json', function (json) {
+    window.works = json;
+    makeWorks();
+  });
+</script>

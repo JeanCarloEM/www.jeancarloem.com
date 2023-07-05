@@ -1,0 +1,33 @@
+<article class="post">
+  <a class='nosimbol header' href='${id}' title='${title}'>
+    <header${noimage}>
+      <!-- SLIDESHOW -->
+      <div class="thumbnail">
+        <img class='thumb' src="${coverurl}" alt="${title}" title="${title}" />
+      </div>
+
+      ${nocover}
+
+      <!-- TITULO -->
+      <h1 class="title">
+        <div>
+          ${title}
+        </div>
+      </h1>
+      </header>
+  </a>
+
+  <!-- CONTEUDO -->
+  <div class="content">
+    <!-- START :: WP EXCERPT -->
+    ${content_html};
+    <!-- START :: WP EXCERPT -->
+    <div class="article_more">
+      <a class='nosimbol' href="${id}">
+        <i class="fa fa-circle"></i>
+        <i class="fa fa-circle"></i>
+        <i class="fa fa-circle"></i>
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "https://livra.me",
+    "url": "https://livra.me",
+    "title": "Livra.me: Calculadora de Renda e Investimento",
+    "attachments": [
+      {
+        "url": "https://aposentar.se/assets/img/cover.png"
+      }
+    ],
+    "content_html": "Descubra quanto e como guardar para ser livre! Curtir a vida, viver de renda, aposentar... enfim, saiba como e quando obterá a liberdade financeira!"
+  },
+  {
+    "id": "https://lab.jeancarloem.com/GaMem/",
+    "url": "https://lab.jeancarloem.com/GaMem/",
+    "title": "GaMem - o Jogo da Memória Alienígena",
+    "attachments": {
+      "url": "https://lab.jeancarloem.com/GaMem/favicon/banner.png"
+    },
+    "content_html": "GaMem é um jogo da memória que utiliza figuras com tema espacial alienígena construído em puro HTML/CSS/Javascript, sem uso de frameworks. Grátis para jogar online."
+  },
+  {
+    "id": "https://lab.jeancarloem.com/NDFASimulator/",
+    "url": "https://lab.jeancarloem.com/NDFASimulator/",
+    "title": "NDFA Simulator - Simulador de Autômatos",
+    "attachments": {
+      "url": "https://lab.jeancarloem.com/NDFASimulator/favicon/banner.png"
+    },
+    "content_html": "Um simulador online de autômatos finitos (determinísticos ou não); permique ver o passo-a-passo do funcionamento de um autômato e, selecionar autômatos predefinidos ou criar o seu."
+  },
+  {
+    "id": "https://lab.jeancarloem.com/jcemslider/",
+    "url": "https://lab.jeancarloem.com/jcemslider/",
+    "title": "JCEM-Slider - Pure CSS Slider",
+    "attachments": {
+      "url": "https://lab.jeancarloem.com/jcemslider/assets/img/banner.png"
+    },
+    "content_html": "JCEM-Slider é um slider responsivo feito em puro CSS e opensource, com recursos adicionais em puro javascript."
+  }
+]

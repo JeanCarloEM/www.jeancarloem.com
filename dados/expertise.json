@@ -1,0 +1,41 @@
+{
+  "Programação": {
+    "HTML": 95,
+    "CSS3/SASS": 90,
+    "Javascript": 95,
+    "PHP": 85,
+    "Pascal": 87,
+    "C++": 83,
+    "Java": 72,
+    "Shell Script": 77,
+    "MySQL/Maridb": 90,
+    "jQuery/Zeptos": 83,
+    "Mediawiki": 70,
+    "Wordpress": 80
+  },
+  "Server Admin": {
+    "CentOS 7+": 70,
+    "PHP/Mydql": 80,
+    "Nginx": 85,
+    "Apache": 65,
+    "Postgress": 45,
+    "Iptables": 79,
+    "SSH": 75,
+    "OpenVPN": 85
+  },
+  "Designer": {
+    "Photoshop": 80,
+    "Illustrator": 70,
+    "Indesign": 73
+  },
+  "Edição de Vídeo": {
+    "Premiere": 80,
+    "After Affects ": 70,
+    "Encore": 60
+  },
+  "Finânceiro": {
+    "Investimentos": 70,
+    "Economia": 50,
+    "Gestão Finânceira": 55
+  }
+}

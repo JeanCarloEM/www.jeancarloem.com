@@ -1,0 +1,47 @@
+<section id='upost' class='artigos' style="display: none !important;">
+  <div class='colunabarra'>
+    <h2 class="caption" id="publicacoes"><span>Últimas Publicações</span></h2>
+    <div class='colunas'>
+    </div>
+  </div>
+</section>
+
+<script>
+  console.log('Main post loaded. Loading posts feed...');
+
+  $.ajax({
+    type: 'GET',
+    url: 'https://blog.jeancarloem.com/feed/post////24/json',
+    // type of data we are expecting in return:
+    dataType: 'json',
+    success: function (json) {
+      if (json && json.hasOwnProperty('items') && (Array.isArray(json.items)) && (json.items.length > 0)) {
+        console.log('Post feed loaded. Has ' + json.items.length + " posts discoved.");
+
+        for (let i = 0; i < json.items.length; i++) {
+          if (i > 5) {
+            if (i === 6) {
+              $("section#upost div.colunas").append($("<div id='upost' class='artigos small'></div>"));
+            }
+
+            $("section#upost div.colunas .small")
+          } else{
+            console.log("Post feed "+i+": "+json.items[i].title);
+            window.makeArtigo(json.items[i], false, (r) => {
+              $("section#upost div.colunas").append($(r));
+            });
+          }
+        }
+      } else {
+        console.log('Post feed loaded. 0 (zero) posts discoved.');
+      }
+
+      $("section#upost").attr('style', '');
+    },
+    error: function (xhr, type) {
+      alert('No post feed detected')
+    }
+  });
+  //showPost($post, true);
+
+</script>

@@ -1,0 +1,131 @@
+
+
+table.qualifica{
+  margin-top: 1.5em;
+  box-shadow: 0 0 .5em rgba(0,0,0,.3);
+  border: 1px solid rgba(255,255,255,.05);
+
+  &:first-of-type{
+    margin-top: 0;
+  }
+
+  tr{
+    td{
+      padding: .4em;
+      border-color: transparent;
+
+      &:first-of-type{
+        width: 1px;
+      }
+
+      &.item{
+        white-space: nowrap;
+      }
+    }
+
+    &.title,
+    &.titulo{
+      &,&:nth-child(odd) {
+        &,td{
+          padding: .1em .5em;
+          text-align: left;
+          vertical-align: middle;
+          border-top: 1em solid transparent;
+
+          span{
+            color: #2bbcdb !important;
+            text-transform: capitalize;
+          }
+
+          > div{
+            max-height: 5em;
+            overflow: hidden;
+            max-width: 100%;
+            line-height: 5em;
+
+            div.grafico{
+              max-height: 5em;
+              text-align: left;
+              position: absolute;
+              right: -4.5em;
+              top: -.2em;
+              height: 100%;
+
+              svg{
+                .ct-series.ct-series-a{
+                  path{
+                    fill: #2bbcdb;
+                  }
+                }
+
+                g{
+                  &,text{
+                    fill: #2bbcdb;
+                    margin-top: -1em;
+                    font-weight: bold;
+                  }
+                }
+              }
+            }
+
+            > span{
+              text-transform: capitalize;
+              display: inline-block;
+              padding: 0 3em;
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &:hover{
+    border-color: #2b92db;
+
+    .title,
+    .titulo{
+      &,&:nth-child(odd) {
+        &,td{
+          span{
+            //color: orange !important;
+          }
+          
+          svg{
+            .ct-series.ct-series-a{
+              path{
+                //fill: orange !important;
+              }
+            }
+
+            g{
+              &,text{
+                //fill: orange !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  td.per{
+    > div{
+      border: 1px solid rgba(255,255,255,.08) !important;
+      border-left: 0px !important;
+
+      position: absolute;
+      top: 36%;
+      height: 28%;
+      right: .5em;
+      background: rgba(0,0,0,.2);
+
+      &:first-of-type{
+        left: 0;
+        right: auto;
+        border-color: #fdf240 !important;
+        background: #fdf240;
+      }
+    }
+  }
+}
