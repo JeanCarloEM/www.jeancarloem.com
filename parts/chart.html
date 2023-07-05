@@ -1,6 +1,6 @@
 <section id="expertise" class="charts">
   <div class='colunabarra'>
-    <h2 class="caption"><span class='glitch' data-text='Expertise / Know-know'>Expertise / Know-know</span></h2>
+    <h2 class="caption"><span class='glitch' data-text='{{hardskill_title}}'>{{hardskill_title}}</span></h2>
 
     <div class="colunas2">
       <div class="grafico chart-hab">
@@ -15,19 +15,7 @@
       </div>
 
       <div class="legenda">
-        <ol type="A" class="barras"><!--
-          <?php
-          $labelBarras = [chr(ord($labelRosca[count($labelRosca) - 1]))];
-          foreach ($know as $key => $value) {
-            echo "<li>$key</li>";
-            $labelBarras[] = chr(ord($labelBarras[count($labelBarras) - 1]) + 1);
-          }
-
-          unset($labelBarras[0]);
-          $labelBarras = array_values($labelBarras);
-          ?>
-        -->
-        </ol>
+        <ol type="A" class="barras"></ol>
       </div>
     </div>
   </div>
@@ -176,7 +164,7 @@
             var know = jk;
             let labelBarras = [String.fromCharCode((labelRosca[labelRosca.length - 1].charCodeAt(0)))];
 
-            let knowkeys = Object.keys(w.quali);
+            let knowkeys = Object.keys(know);
             for (let kk in knowkeys) {
               let key = knowkeys[kk];
               $('section#expertise .legenda ol.barras').append($("<li>" + key + "</li>"));

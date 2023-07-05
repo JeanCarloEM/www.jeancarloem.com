@@ -1,8 +1,8 @@
 (function ($, w) {
-  String.prototype.parseProps = function (items, ukn) {
+  String.prototype.parseRegex = function (regex, items, ukn) {
     if ((typeof items !== "object") && (typeof items !== "string")) return;
 
-    return this.replace(/\$\{([^\{\}\$\s]+)\}/g, (m, ctt, oset, input_string) => {
+    return this.replace(regex, (m, ctt, oset, input_string) => {
       if (items.hasOwnProperty(ctt)) {
         if (typeof items[ctt] === "function") return items[ctt]() + "";
         if ((typeof items[ctt] === "string") || (isFinite(items[ctt]))) return items[ctt] + "";
@@ -11,6 +11,25 @@
       return (typeof ctt === "string") ? ctt : ((typeof ctt === "function") ? ukn(ctt) + "" : m);
     });
   };
+
+  String.prototype.parseProps = function (items, ukn) {
+    return this.parseRegex(/\$\{([^\{\}\$\s]+)\}/g, items, ukn);
+  };
+
+  String.prototype.parseI18n = function (items, ukn) {
+    return this.parseRegex(/\{\{([^\{\}\$\s]+)\}\}/g, items, ukn);
+  };
+
+  String.prototype.i18n = function () {
+    try {
+      return this.parseI18n(w.i18n());
+    } catch (error) {
+
+    }
+    return this;
+  };
+
+
 
   w.rand = function (max) {
     var r = Math.floor((1 + Math.random()) * 0x10000);
@@ -293,6 +312,7 @@
       : false;
 
     post.noimage = ((typeof noimage === "undefined" || !noimage) && (cover !== false)) ? '' : ' class="noimage"';
+    post.nocover = cover ? '' : '&nbsp';
     post.coverurl = cover ? cover : '&nbsp';
     post.attachments = cover;
 
@@ -317,8 +337,9 @@
     var i = pgs[itm];
 
     console.log("Loading '" + i + "'...");
+
     $.get('parts/' + i + '.html', (r) => {
-      $('section.content.inner.wrapper').append($(r));
+      $('section.content.inner.wrapper').append($(r.i18n()));
       w.loadPages(pgs, ++itm);
     });
   };
@@ -411,8 +432,34 @@
     console.log('Loading page components...');
     $.getJSON('dados/main.page.json', function (json) {
       console.log('Page components loaded.');
-      w.loadPages(json);
-      w.afterLoad();
+
+      console.log('Loading i18n...');
+      $.getJSON('dados/i18n.json', function (i18n_data) {
+        console.log('i18n loaded.');
+
+        const i18n_full = function () {
+          if (!i18n_data) return {};
+
+          let lang = navigator.language || navigator.userLanguage;
+          lang = lang.replace(/[^\w]\w+/, '').toLowerCase();
+
+          if (!i18n_data.hasOwnProperty(lang)) return i18n_data['en'];
+
+          let k = Object.keys(i18n_data[lang]);
+          for (let i = 0; i < k.length; i++) {
+            i18n_data['en'][k[i]] = i18n_data[lang].hasOwnProperty(k[i]) ? i18n_data[lang][k[i]] : i18n_data['en'][k[i]];
+          }
+
+          return i18n_data['en'];
+        }();
+
+        w.i18n = () => {
+          return i18n_full;
+        };
+
+        w.loadPages(json);
+        w.afterLoad();
+      });
     });
   });
 })(Zepto, window);
