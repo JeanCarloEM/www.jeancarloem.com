@@ -1,4 +1,4 @@
-<section id="expertise" class="charts">
+<section id="expertise" class="charts curriculo_online">
   <div class='colunabarra'>
     <h2 class="caption"><span class='glitch' data-text='{{hardskill_title}}'>{{hardskill_title}}</span></h2>
 
@@ -21,9 +21,9 @@
   </div>
 </section>
 
-<section id="habilidades">
+<section id="habilidades" class="curriculo_online">
   <div class='colunabarra'>
-    <h2 class="caption"><span class='glitch' data-text='Conhecimento Prático'>Conhecimento Prático</span></h2>
+    <h2 class="caption"><span class='glitch' data-text='{{practical_knowledge}}'>{{practical_knowledge}}</span></h2>
 
     <p>Abaixo listo onde possuo conhecimento prático (conhecimento teórico ou básico não citado):<br /><br /></p>
 
@@ -112,7 +112,7 @@
     ];
 
     $.getJSON('dados/expertise.json', function (json) {
-      w.quali = json;
+      w.quali = JSON.parse(JSON.stringify(json).i18n());
 
       $.get('parts/knows.title.html', (ktitle) => {
         $.get('parts/knows.row.html', (krow) => {
@@ -161,7 +161,7 @@
           }, options);
 
           $.getJSON('dados/know.json', function (jk) {
-            var know = jk;
+            var know = JSON.parse(JSON.stringify(jk).i18n());
             let labelBarras = [String.fromCharCode((labelRosca[labelRosca.length - 1].charCodeAt(0)))];
 
             let knowkeys = Object.keys(know);

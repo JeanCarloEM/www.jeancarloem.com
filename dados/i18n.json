@@ -1,8 +1,15 @@
 {
   "pt": {
+    "practical_knowledge": "Experiência",
+    "security": "Segurança",
+    "programming": "Programação",
+    "show_more_of_me": "Mais informações, qualificações, habilidades, formação e outros..."
   },
-
   "en": {
+    "show_more_of_me": "More information, qualifications, skills, education and more...",
+    "practical_knowledge": "Practical knowledge",
+    "security": "Security",
+    "programming": "Programming",
     "hardskill_title": "Hard Skill"
   }
 }
