@@ -102,6 +102,7 @@
   };
 
   w.masterheader = function () {
+    return;
     w.masterheaderFEITO = false;
 
     $("section.body > nav.topmaster").addClass('forcaroculto');
@@ -398,7 +399,7 @@
     $(window).on('resize', function () {
       if (!w.downmenuFEITO) {
         w.downmenuFEITO = true;
-        //w.setTimeout("window.downmenu();", 1000);
+        w.setTimeout("window.downmenu();", 1000);
       }
 
       if (!w.masterheaderFEITO) {
